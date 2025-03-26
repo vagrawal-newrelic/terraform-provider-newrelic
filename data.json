@@ -1,0 +1,62 @@
+[
+  {
+    "owning_team": "Sales Team",
+    "resource_keywords": [
+      "FR_SALES"
+    ]
+  },
+  {
+    "owning_team": "Delivery Team",
+    "resource_keywords": [
+      "FR_DELIVERY"
+    ]
+  },
+  {
+    "owning_team": "Development Team",
+    "resource_keywords": [
+      "FR_BACKEND"
+    ]
+  },
+  {
+    "owning_team": "Operations Team",
+    "resource_keywords": [
+      "FR_OPERATIONS"
+    ]
+  },
+  {
+    "owning_team": "Support Team",
+    "resource_keywords": [
+      "FR_SUPPORT"
+    ]
+  },
+  {
+    "owning_team": "Finance Team",
+    "resource_keywords": [
+      "FR_FINANCE"
+    ]
+  },
+  {
+    "owning_team": "HR Team",
+    "resource_keywords": [
+      "FR_HIRING"
+    ]
+  },
+  {
+    "owning_team": "QA Team",
+    "resource_keywords": [
+      "FR_TESTING"
+    ]
+  },
+  {
+    "owning_team": "Security Team",
+    "resource_keywords": [
+      "FR_SECURITY_ANALYSIS"
+    ]
+  },
+  {
+    "owning_team": "DevOps Team",
+    "resource_keywords": [
+      "FR_CI_CD_PIPELINES"
+    ]
+  }
+]
