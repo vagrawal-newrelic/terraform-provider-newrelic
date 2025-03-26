@@ -1,0 +1,47 @@
+name: Assign Owning Team Labels
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  analyze-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install json5
+
+      - name: Process Issue Content
+        id: process
+        env:
+          ISSUE_TITLE: ${{ github.event.issue.title }}  # Pass issue title here
+          ISSUE_BODY: ${{ github.event.issue.body }}    # Pass issue body here
+        run: |
+          python process_issue.py
+
+      - name: Add Labels to Issue
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const labels = "${{ steps.process.outputs.labels }}";
+            const labelsToAdd = labels ? labels.split(', ').filter(label => label) : [];
+
+            // Ensure there are valid labels before making API call
+            if (labelsToAdd.length > 0) {
+              await github.rest.issues.addLabels({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                labels: [...new Set(labelsToAdd)] // Ensure unique labels are added
+              });
+            } else {
+              console.log("No valid labels found to add.");
+            }
